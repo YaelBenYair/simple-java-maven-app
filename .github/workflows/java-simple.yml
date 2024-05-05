@@ -42,8 +42,16 @@ jobs:
           docker tag yaelbenyair/java-maven:${{steps.bump.outputs.version}} yaelbenyair/java-maven
           docker push yaelbenyair/java-maven
 
-          #deploy:
-    #needs: build
+  deploy:
+    needs: build
+    name: run image
+
+    steps:
+      - name: pull docker image
+        run: docker pull yaelbenyair/java-maven
+
+      - name: run image
+        run: docker run --name java-m yaelbenyair/java-maven
 
 
 
