@@ -45,6 +45,7 @@ jobs:
   deploy:
     needs: build
     name: run image
+    runs-on: ubuntu-latest
 
     steps:
       - name: pull docker image
